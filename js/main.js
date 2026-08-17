@@ -130,17 +130,24 @@
   if (timeline && !reduceMotion) {
     var tlFill = timeline.querySelector('.tl-fill');
     var tlTrack = timeline.querySelector('.tl-track');
+    var tlBeam = document.createElement('div');   // glowing dot that rides the line
+    tlBeam.className = 'tl-beam';
+    timeline.appendChild(tlBeam);
     var tlTicking = false;
     function tlRender() {
       tlTicking = false;
       var rect = timeline.getBoundingClientRect();
       var vh = window.innerHeight;
       var H = timeline.offsetHeight;
-      var denom = H - vh * 0.5;
+      var denom = H - vh * 0.4;             // Aceternity offset: start 10% -> end 50%
       if (denom < 1) denom = H;
-      var p = (vh * 0.35 - rect.top) / denom;
+      var p = (vh * 0.1 - rect.top) / denom;
       p = Math.min(1, Math.max(0, p));
-      tlFill.style.height = (p * tlTrack.offsetHeight) + 'px';
+      var fh = p * tlTrack.offsetHeight;
+      tlFill.style.height = fh + 'px';
+      tlFill.style.opacity = Math.min(1, p / 0.08).toFixed(3);   // fade in over first slice
+      tlBeam.style.transform = 'translateY(' + fh + 'px)';
+      tlBeam.style.opacity = (p > 0.01 && p < 0.994) ? '1' : '0';
     }
     function onTimeline() {
       if (!tlTicking) { tlTicking = true; requestAnimationFrame(tlRender); }
