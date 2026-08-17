@@ -153,9 +153,10 @@ p  { color: var(--gray-600); }
 .blob { display: none; }
 .hero .container { position: relative; z-index: 2; }
 
-.hero-inner { max-width: 780px; text-align: left; }
+.hero-inner { max-width: 820px; margin: 0 auto; text-align: center; }
 .hero-inner h1 { margin-bottom: 20px; }
-.hero-inner .sub { font-size: 1.18rem; color: var(--gray-600); max-width: 620px; margin: 0 0 32px; }
+.hero-inner .sub { font-size: 1.18rem; color: var(--gray-600); max-width: 640px; margin: 0 auto 32px; }
+.hero-inner .btn-row { justify-content: center; align-items: center; }
 .page-hero { text-align: left; max-width: 780px; }
 .page-hero h1 { margin-bottom: 16px; }
 .page-hero .sub { font-size: 1.15rem; color: var(--gray-600); max-width: 640px; margin: 0; }
