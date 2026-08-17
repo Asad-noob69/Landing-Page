@@ -78,7 +78,54 @@
     });
   });
 
-  /* ---------- 5. Contact form (front-end only, no backend) ---------- */
+  /* ---------- 5. Scroll-progress bar (site-wide) ---------- */
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.appendChild(bar);
+  function updateProgress() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? (window.scrollY / max) : 0;
+    bar.style.width = (Math.min(1, Math.max(0, p)) * 100) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  /* ---------- 6. ScrollStack (pinned stacking cards) ---------- */
+  var stack = document.querySelector('.scroll-stack');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (stack && !reduceMotion) {
+    var cards = Array.prototype.slice.call(stack.querySelectorAll('.scroll-stack-card'));
+    var tops = [];
+    var itemScale = 0.04;   // each deeper card shrinks by 4%
+    var baseScale = 0.88;   // floor for the deepest card
+    var ticking = false;
+
+    function measure() {
+      tops = cards.map(function (c) { return parseFloat(getComputedStyle(c).top) || 0; });
+    }
+    function render() {
+      ticking = false;
+      for (var i = 0; i < cards.length; i++) {
+        var depth = 0; // how many later cards have pinned on top of this one
+        for (var j = i + 1; j < cards.length; j++) {
+          if (cards[j].getBoundingClientRect().top <= tops[j] + 1) depth++;
+        }
+        var scale = Math.max(baseScale, 1 - depth * itemScale);
+        cards[i].style.transform = 'scale(' + scale.toFixed(4) + ')';
+        cards[i].style.opacity = (1 - depth * 0.05).toFixed(3);
+      }
+    }
+    function onStackScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(render); }
+    }
+    measure();
+    render();
+    window.addEventListener('scroll', onStackScroll, { passive: true });
+    window.addEventListener('resize', function () { measure(); render(); });
+  }
+
+  /* ---------- 7. Contact form (front-end only, no backend) ---------- */
   var form = document.querySelector('#contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {

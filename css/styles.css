@@ -46,7 +46,7 @@ body {
   line-height: 1.65;
   font-size: 17px;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip; /* prevents h-scroll without breaking position:sticky */
 }
 img, svg { display: block; max-width: 100%; }
 a { color: var(--blue); text-decoration: none; transition: color .2s ease; }
@@ -368,6 +368,30 @@ p  { color: var(--gray-600); }
 /* ============================================================
    SCROLL ANIMATIONS — calm fade + slide up
    ============================================================ */
+/* thin scroll-progress bar (top of page, site-wide) */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--blue); z-index: 1100; pointer-events: none; }
+
+/* ScrollStack — pinned stacking cards (vanilla port of reactbits ScrollStack) */
+.scroll-stack { max-width: 780px; margin: 0 auto; }
+.scroll-stack-card { position: sticky; background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 40px 44px; margin-bottom: 84px; min-height: 190px; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 12px 32px rgba(25,25,25,.07); transform-origin: top center; will-change: transform; }
+.scroll-stack-card:last-child { margin-bottom: 0; }
+.scroll-stack-card:nth-child(1) { top: 108px; }
+.scroll-stack-card:nth-child(2) { top: 128px; }
+.scroll-stack-card:nth-child(3) { top: 148px; }
+.scroll-stack-card:nth-child(4) { top: 168px; }
+.scroll-stack-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.scroll-stack-card p { font-size: 1.1rem; color: var(--gray-600); max-width: 560px; }
+@media (max-width: 640px) {
+  .scroll-stack-card { padding: 28px 24px; margin-bottom: 40px; min-height: 148px; }
+  .scroll-stack-card:nth-child(1) { top: 84px; }
+  .scroll-stack-card:nth-child(2) { top: 98px; }
+  .scroll-stack-card:nth-child(3) { top: 112px; }
+  .scroll-stack-card:nth-child(4) { top: 126px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-stack-card { position: relative; top: auto !important; margin-bottom: 20px; transform: none !important; opacity: 1 !important; }
+}
+
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
 .reveal.d1 { transition-delay: .08s; } .reveal.d2 { transition-delay: .16s; }
