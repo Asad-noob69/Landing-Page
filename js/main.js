@@ -125,7 +125,40 @@
     window.addEventListener('resize', function () { measure(); render(); });
   }
 
-  /* ---------- 7. Contact form (front-end only, no backend) ---------- */
+  /* ---------- 7. Scroll timeline (How it works) ---------- */
+  var timeline = document.querySelector('.timeline');
+  if (timeline && !reduceMotion) {
+    var tlFill = timeline.querySelector('.tl-fill');
+    var tlTrack = timeline.querySelector('.tl-track');
+    var tlDots = Array.prototype.slice.call(timeline.querySelectorAll('.tl-dot'));
+    var tlTicking = false;
+    function tlRender() {
+      tlTicking = false;
+      var rect = timeline.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var H = timeline.offsetHeight;
+      var denom = H - vh * 0.5;
+      if (denom < 1) denom = H;
+      var p = (vh * 0.25 - rect.top) / denom;
+      p = Math.min(1, Math.max(0, p));
+      var th = tlTrack.offsetHeight;
+      var fh = p * th;
+      tlFill.style.height = fh + 'px';
+      var fillBottom = tlTrack.getBoundingClientRect().top + fh;
+      tlDots.forEach(function (d) {
+        var c = d.getBoundingClientRect().top + d.offsetHeight / 2;
+        d.classList.toggle('active', c <= fillBottom + 2);
+      });
+    }
+    function onTimeline() {
+      if (!tlTicking) { tlTicking = true; requestAnimationFrame(tlRender); }
+    }
+    window.addEventListener('scroll', onTimeline, { passive: true });
+    window.addEventListener('resize', onTimeline);
+    tlRender();
+  }
+
+  /* ---------- 8. Contact form (front-end only, no backend) ---------- */
   var form = document.querySelector('#contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {

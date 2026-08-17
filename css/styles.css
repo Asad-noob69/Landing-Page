@@ -392,6 +392,32 @@ p  { color: var(--gray-600); }
   .scroll-stack-card { position: relative; top: auto !important; margin-bottom: 20px; transform: none !important; opacity: 1 !important; }
 }
 
+/* Scroll timeline (vanilla port of Aceternity Timeline) — line draws downward */
+.timeline { position: relative; max-width: 900px; margin: 0 auto; }
+.tl-track { position: absolute; left: 21px; top: 34px; bottom: 34px; width: 2px; background: var(--gray-200); border-radius: 2px; }
+.tl-fill { position: absolute; left: 21px; top: 34px; width: 2px; height: 0; background: linear-gradient(to bottom, var(--blue), var(--accent-blue) 60%, rgba(37,99,235,0)); border-radius: 2px; z-index: 1; }
+.tl-item { position: relative; display: grid; grid-template-columns: 300px 1fr; gap: 40px; padding: 34px 0; }
+.tl-node { display: flex; align-items: center; gap: 18px; }
+.tl-dot { position: relative; z-index: 2; flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 2px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 600; font-size: 1.02rem; color: var(--gray-400); transition: border-color .3s ease, color .3s ease, background .3s ease; }
+.tl-dot.active { border-color: var(--blue); background: var(--blue); color: #fff; }
+.tl-title { font-family: var(--font-head); font-weight: 700; font-size: 1.42rem; color: var(--dark); }
+.tl-title-m { display: none; }
+.tl-body { padding-top: 9px; }
+.tl-body p { font-size: 1.05rem; color: var(--gray-600); max-width: 520px; }
+@media (max-width: 760px) {
+  .tl-track, .tl-fill { left: 21px; top: 20px; bottom: 20px; }
+  .tl-item { grid-template-columns: 1fr; gap: 0; padding: 18px 0 18px 62px; }
+  .tl-dot { position: absolute; left: 0; top: 18px; }
+  .tl-title { display: none; }
+  .tl-title-m { display: block; font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; color: var(--dark); margin-bottom: 6px; }
+  .tl-body { padding-top: 0; }
+  .tl-body p { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tl-fill { bottom: 34px; height: auto !important; }
+  .tl-dot { border-color: var(--blue); background: var(--blue); color: #fff; }
+}
+
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
 .reveal.d1 { transition-delay: .08s; } .reveal.d2 { transition-delay: .16s; }
