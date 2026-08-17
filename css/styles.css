@@ -237,7 +237,7 @@ p  { color: var(--gray-600); }
 .split-body h2 { margin-bottom: 14px; }
 .split-body .desc { margin-bottom: 22px; font-size: 1.05rem; }
 .check-list li { position: relative; padding-left: 30px; margin-bottom: 12px; color: var(--gray-700); }
-.check-list li::before { content: ""; position: absolute; left: 0; top: 7px; width: 18px; height: 18px; border-radius: 50%; background: #e6f8f1; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2310B981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
+.check-list li::before { content: ""; position: absolute; left: 0; top: 7px; width: 18px; height: 18px; border-radius: 50%; background: #eaf1ff; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
 
 /* ============================================================
    INDUSTRIES / CASE STUDY
@@ -471,7 +471,7 @@ p  { color: var(--gray-600); }
 :root {
   --grad-blue:  linear-gradient(135deg, #2563EB 0%, #4f46e5 48%, #06b6d4 100%);
   --grad-green: linear-gradient(135deg, #10B981 0%, #059669 100%);
-  --grad-brand: linear-gradient(135deg, #2563EB, #06b6d4, #10B981);
+  --grad-brand: linear-gradient(135deg, #2563EB, #3b82f6, #06b6d4);
 }
 
 /* animated aurora behind every hero */
@@ -487,11 +487,11 @@ p  { color: var(--gray-600); }
 .hero-inner h1 { background: linear-gradient(115deg, #0b1220 0%, #1e3a8a 42%, #2563EB 72%, #06b6d4 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 /* fancy buttons: gradient + glow + shine sweep */
-.btn-cta { background: var(--grad-green); box-shadow: 0 10px 28px rgba(16,185,129,.32); position: relative; overflow: hidden; }
-.btn-cta:hover { background: var(--grad-green); filter: brightness(.96); box-shadow: 0 16px 40px rgba(16,185,129,.44); color: #fff; }
+.btn-cta { background: var(--grad-blue); box-shadow: 0 10px 28px rgba(37,99,235,.32); position: relative; overflow: hidden; }
+.btn-cta:hover { background: var(--grad-blue); filter: brightness(1.05); box-shadow: 0 16px 40px rgba(37,99,235,.44); color: #fff; }
 .btn-primary { background: var(--grad-blue); box-shadow: 0 10px 28px rgba(37,99,235,.3); position: relative; overflow: hidden; }
 .btn-primary:hover { background: var(--grad-blue); filter: brightness(1.04); box-shadow: 0 16px 40px rgba(37,99,235,.42); color: #fff; }
-.nav .btn-cta { background: var(--grad-green); box-shadow: 0 6px 18px rgba(16,185,129,.34); }
+.nav .btn-cta { background: var(--grad-blue); box-shadow: 0 6px 18px rgba(37,99,235,.34); }
 .btn-cta::after, .btn-primary::after { content: ""; position: absolute; top: 0; left: -130%; width: 55%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255,255,255,.4), transparent); transform: skewX(-20deg); transition: left .6s ease; }
 .btn-cta:hover::after, .btn-primary:hover::after { left: 150%; }
 
@@ -516,17 +516,17 @@ p  { color: var(--gray-600); }
 .section-head h2::after { content: ""; position: absolute; left: 0; bottom: -12px; width: 58px; height: 4px; border-radius: 4px; background: var(--grad-brand); }
 
 /* fancy CTA band: gradient + glow orb */
-.cta-band { background: linear-gradient(135deg, #0b1220 0%, #1e3a8a 55%, #0f766e 125%); position: relative; overflow: hidden; }
+.cta-band { background: linear-gradient(135deg, #0b1220 0%, #1e3a8a 60%, #1e40af 120%); position: relative; overflow: hidden; }
 .cta-band::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,.42), transparent 70%); top: -130px; right: -70px; filter: blur(30px); pointer-events: none; }
 .cta-band .container { position: relative; z-index: 1; }
 
 /* featured pricing: animated gradient ring */
 .price-card.featured { border: 1px solid transparent; }
-.price-card.featured::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 2px; background: linear-gradient(135deg, #2563EB, #06b6d4, #10B981); background-size: 220% 220%; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: fx-ring 6s linear infinite; pointer-events: none; }
+.price-card.featured::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 2px; background: linear-gradient(135deg, #2563EB, #06b6d4, #4f46e5); background-size: 220% 220%; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: fx-ring 6s linear infinite; pointer-events: none; }
 @keyframes fx-ring { to { background-position: 220% 0; } }
 
 /* gradient scroll-progress bar */
-.scroll-progress { background: linear-gradient(90deg, #2563EB, #06b6d4 55%, #10B981); box-shadow: 0 0 10px rgba(37,99,235,.5); }
+.scroll-progress { background: linear-gradient(90deg, #2563EB, #3b82f6 50%, #06b6d4); box-shadow: 0 0 10px rgba(37,99,235,.5); }
 
 /* reveal gets a subtle scale */
 .reveal { transform: translateY(28px) scale(.985); }
@@ -549,7 +549,7 @@ p  { color: var(--gray-600); }
   border: 1.5px solid transparent;
   background:
     linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(135deg, rgba(37,99,235,.55), rgba(6,182,212,.45) 55%, rgba(16,185,129,.5)) border-box;
+    linear-gradient(135deg, rgba(37,99,235,.55), rgba(6,182,212,.45) 55%, rgba(79,70,229,.5)) border-box;
   box-shadow: 0 20px 48px rgba(37,99,235,.13), 0 6px 18px rgba(17,24,39,.06);
   position: relative; overflow: hidden;
 }
