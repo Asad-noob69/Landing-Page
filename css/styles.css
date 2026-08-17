@@ -462,3 +462,84 @@ p  { color: var(--gray-600); }
   .hero { padding: calc(var(--nav-h) + 48px) 0 64px; }
   .btn-row .btn { width: 100%; }
 }
+
+/* ============================================================
+   ✦ FANCY LAYER — appended enhancement (client "fancy" request).
+   Everything below can be deleted to return to the minimal look;
+   full revert: git reset --hard original.
+   ============================================================ */
+:root {
+  --grad-blue:  linear-gradient(135deg, #2563EB 0%, #4f46e5 48%, #06b6d4 100%);
+  --grad-green: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  --grad-brand: linear-gradient(135deg, #2563EB, #06b6d4, #10B981);
+}
+
+/* animated aurora behind every hero */
+.hero { overflow: hidden; }
+.hero::before, .hero::after { content: ""; position: absolute; z-index: 0; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+.hero::before { width: 540px; height: 540px; background: radial-gradient(circle at 30% 30%, rgba(99,140,255,.55), transparent 70%); top: -180px; left: -90px; opacity: .55; animation: fx-auroraA 15s ease-in-out infinite alternate; }
+.hero::after  { width: 480px; height: 480px; background: radial-gradient(circle at 60% 40%, rgba(110,240,210,.5), transparent 70%); top: -80px; right: -70px; opacity: .5; animation: fx-auroraB 18s ease-in-out infinite alternate; }
+.hero--home::before { opacity: .65; }
+@keyframes fx-auroraA { to { transform: translate(70px, 40px) scale(1.12); } }
+@keyframes fx-auroraB { to { transform: translate(-60px, 34px) scale(1.16); } }
+
+/* gradient hero headline */
+.hero-inner h1 { background: linear-gradient(115deg, #0b1220 0%, #1e3a8a 42%, #2563EB 72%, #06b6d4 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* fancy buttons: gradient + glow + shine sweep */
+.btn-cta { background: var(--grad-green); box-shadow: 0 10px 28px rgba(16,185,129,.32); position: relative; overflow: hidden; }
+.btn-cta:hover { box-shadow: 0 16px 40px rgba(16,185,129,.44); color: #fff; }
+.btn-primary { background: var(--grad-blue); box-shadow: 0 10px 28px rgba(37,99,235,.3); position: relative; overflow: hidden; }
+.btn-primary:hover { box-shadow: 0 16px 40px rgba(37,99,235,.42); color: #fff; }
+.nav .btn-cta { background: var(--grad-green); box-shadow: 0 6px 18px rgba(16,185,129,.34); }
+.btn-cta::after, .btn-primary::after { content: ""; position: absolute; top: 0; left: -130%; width: 55%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255,255,255,.4), transparent); transform: skewX(-20deg); transition: left .6s ease; }
+.btn-cta:hover::after, .btn-primary:hover::after { left: 150%; }
+
+/* glassy nav on scroll */
+.nav.solid { background: rgba(255,255,255,.72); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); border-bottom-color: rgba(17,24,39,.08); }
+
+/* gradient logo mark + glow */
+.logo .mark { background: var(--grad-blue); box-shadow: 0 6px 18px rgba(37,99,235,.35); }
+
+/* unified card glow + lift */
+.card, .tag-card, .price-card, .post, .mv-card, .leader, .quote-card, .step, .scroll-stack-card {
+  transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease, border-color .3s ease;
+}
+.card:hover, .tag-card:hover, .price-card:hover, .post:hover, .mv-card:hover, .leader:hover, .quote-card:hover, .step:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 52px rgba(37,99,235,.15), 0 8px 20px rgba(17,24,39,.08);
+  border-color: rgba(37,99,235,.35);
+}
+
+/* gradient accent under section headings */
+.section-head h2 { position: relative; display: inline-block; }
+.section-head h2::after { content: ""; position: absolute; left: 0; bottom: -12px; width: 58px; height: 4px; border-radius: 4px; background: var(--grad-brand); }
+
+/* fancy CTA band: gradient + glow orb */
+.cta-band { background: linear-gradient(135deg, #0b1220 0%, #1e3a8a 55%, #0f766e 125%); position: relative; overflow: hidden; }
+.cta-band::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,.42), transparent 70%); top: -130px; right: -70px; filter: blur(30px); pointer-events: none; }
+.cta-band .container { position: relative; z-index: 1; }
+
+/* featured pricing: animated gradient ring */
+.price-card.featured { border: 1px solid transparent; }
+.price-card.featured::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 2px; background: linear-gradient(135deg, #2563EB, #06b6d4, #10B981); background-size: 220% 220%; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: fx-ring 6s linear infinite; pointer-events: none; }
+@keyframes fx-ring { to { background-position: 220% 0; } }
+
+/* gradient scroll-progress bar */
+.scroll-progress { background: linear-gradient(90deg, #2563EB, #06b6d4 55%, #10B981); box-shadow: 0 0 10px rgba(37,99,235,.5); }
+
+/* reveal gets a subtle scale */
+.reveal { transform: translateY(28px) scale(.985); }
+.reveal.in { transform: none; }
+
+/* colorful blog thumbnails again */
+.post-img { background: linear-gradient(135deg, #dbe6ff, #e6fff5); }
+.post-img.v2 { background: linear-gradient(135deg, #e9e0ff, #dbe6ff); }
+.post-img.v3 { background: linear-gradient(135deg, #ffe9d6, #ffe0ec); }
+.post-img.v4 { background: linear-gradient(135deg, #d6f3ff, #e6fff5); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before, .hero::after { animation: none; }
+  .price-card.featured::before { animation: none; }
+  .btn-cta::after, .btn-primary::after { display: none; }
+}
