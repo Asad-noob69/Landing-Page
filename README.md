@@ -54,7 +54,7 @@ python3 -m http.server 8000
 - Contact form: currently front-end only — connect it to your email service / backend.
 - Google Map embed on the contact page (placeholder pin).
 - OG images: each page references `assets/og-*.png` (1200×630) — add the real images.
-- Real email/phone: `hello@pilotsdr.com` and the placeholder phone number.
+- Real email/phone: `Sales@pilotsdr.com` and the placeholder phone number.
 
 ## Final checklist (from the build guide)
 
