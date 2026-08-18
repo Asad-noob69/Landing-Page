@@ -111,10 +111,9 @@ p  { color: var(--gray-600); }
 .nav .container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 
 /* logo — renders "PilotSDR" as one word (gap:0 between text parts) */
-.logo { display: inline-flex; align-items: center; gap: 0; font-family: var(--font-head); font-weight: 700; font-size: 1.24rem; color: var(--dark); letter-spacing: -0.01em; }
-.logo .mark { margin-right: 10px; width: 30px; height: 30px; border-radius: 8px; background: var(--blue); display: inline-flex; align-items: center; justify-content: center; color: #fff; }
-.logo .mark svg { width: 17px; height: 17px; }
-.logo b { color: var(--blue); font-weight: 700; }
+.logo { display: inline-flex; align-items: center; gap: 0; font-family: var(--font-head); font-weight: 700; font-size: 1.32rem; color: var(--blue); letter-spacing: -0.01em; }
+.logo-ico { height: 34px; width: auto; margin-right: 11px; display: block; }
+.logo b { color: var(--dark); font-weight: 700; }
 
 .nav-links { display: flex; align-items: center; gap: 26px; }
 .nav-links > .btn-cta { display: none; }
@@ -348,9 +347,8 @@ p  { color: var(--gray-600); }
    ============================================================ */
 .footer { background: var(--dark); color: #a3a3a3; padding: 74px 0 0; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.3fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.08); }
-.footer .logo { color: #fff; margin-bottom: 16px; }
-.footer .logo .mark { background: var(--blue); }
-.footer .logo b { color: var(--accent-blue); }
+.footer .logo { color: var(--accent-blue); margin-bottom: 16px; }
+.footer .logo b { color: #fff; }
 .footer .brand-line { color: #737373; font-size: .94rem; max-width: 280px; line-height: 1.6; }
 .footer h5 { color: #fff; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 18px; font-weight: 600; }
 .footer ul li { margin-bottom: 12px; }
