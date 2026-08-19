@@ -1,4 +1,4 @@
-/* PilotSDR — shared interactions
+/* PilotSDR, shared interactions
    1. Sticky nav: transparent on hero, solid on scroll
    2. Mobile hamburger menu
    3. Calm scroll-reveal (fade + slide up)
@@ -157,17 +157,52 @@
     tlRender();
   }
 
-  /* ---------- 8. Contact form (front-end only, no backend) ---------- */
+  /* ---------- 8. Contact form (submits to Formspree, emails sales@pilotsdr.com) ---------- */
   var form = document.querySelector('#contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var note = document.querySelector('#form-status');
-      if (note) {
+      var btn = form.querySelector('button[type="submit"]');
+      var action = form.getAttribute('action') || '';
+
+      function show(msg) {
+        if (!note) return;
         note.hidden = false;
-        note.textContent = 'Thanks — your message has been captured. (Connect this form to your backend or email service to receive it.)';
+        note.textContent = msg;
       }
-      form.reset();
+
+      // Guard: form not connected yet.
+      if (action.indexOf('YOUR_FORM_ID') !== -1 || action.indexOf('formspree.io/f/') === -1) {
+        show('This form is not connected yet. Add your Formspree form ID in contact.html to start receiving messages.');
+        return;
+      }
+
+      if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Sending…'; }
+      show('Sending your message…');
+
+      fetch(action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          show('Thanks! Your message has been sent. We will get back to you shortly.');
+          form.reset();
+        } else {
+          res.json().then(function (data) {
+            var msg = (data && data.errors) ? data.errors.map(function (er) { return er.message; }).join(', ')
+                                            : 'Something went wrong. Please email sales@pilotsdr.com directly.';
+            show(msg);
+          }).catch(function () {
+            show('Something went wrong. Please email sales@pilotsdr.com directly.');
+          });
+        }
+      }).catch(function () {
+        show('Network error. Please email sales@pilotsdr.com directly.');
+      }).then(function () {
+        if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Send Message'; }
+      });
     });
   }
 })();

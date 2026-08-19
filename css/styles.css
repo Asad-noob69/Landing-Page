@@ -1,5 +1,5 @@
 /* ============================================================
-   PilotSDR — Design System (per Build Guide)
+   PilotSDR, Design System (per Build Guide)
    Clean · white · minimal. Colors, fonts, buttons, animations,
    and spacing follow the document exactly.
    ============================================================ */
@@ -91,7 +91,7 @@ p  { color: var(--gray-600); }
   transition: transform .16s ease, background .16s ease, color .16s ease, border-color .16s ease;
 }
 .btn:hover { transform: translateY(-1px); }               /* subtle lift, no glow */
-.btn-cta { background: var(--green); color: #fff; }        /* primary action — green */
+.btn-cta { background: var(--green); color: #fff; }        /* primary action, green */
 .btn-cta:hover { background: var(--green-dark); color: #fff; }
 .btn-primary { background: var(--blue); color: #fff; }
 .btn-primary:hover { background: var(--accent-blue); color: #fff; }
@@ -104,13 +104,13 @@ p  { color: var(--gray-600); }
 .btn-row.center { justify-content: center; }
 
 /* ============================================================
-   NAV — sticky, transparent on hero → solid on scroll
+   NAV, sticky, transparent on hero → solid on scroll
    ============================================================ */
 .nav { position: fixed; inset: 0 0 auto 0; height: var(--nav-h); z-index: 1000; display: flex; align-items: center; background: transparent; border-bottom: 1px solid transparent; transition: background .3s ease, box-shadow .3s ease, border-color .3s ease; }
 .nav.solid { background: #fff; border-bottom-color: var(--gray-200); box-shadow: var(--shadow-sm); }
 .nav .container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 
-/* logo — renders "PilotSDR" as one word (gap:0 between text parts) */
+/* logo, renders "PilotSDR" as one word (gap:0 between text parts) */
 .logo { display: inline-flex; align-items: center; gap: 0; font-family: var(--font-head); font-weight: 700; font-size: 1.32rem; color: var(--blue); letter-spacing: -0.01em; }
 .logo-ico { height: 34px; width: auto; margin-right: 11px; display: block; }
 .logo b { color: var(--dark); font-weight: 700; }
@@ -190,7 +190,7 @@ p  { color: var(--gray-600); }
 .logo-ph { height: 40px; min-width: 128px; border-radius: 8px; background: var(--gray-100); color: var(--gray-400); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 600; font-size: .9rem; }
 
 /* ============================================================
-   HOW IT WORKS — steps
+   HOW IT WORKS, steps
    ============================================================ */
 .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 26px; position: relative; }
 .step { position: relative; }
@@ -219,14 +219,14 @@ p  { color: var(--gray-600); }
 .who .role { font-size: .85rem; color: var(--gray-500); }
 
 /* ============================================================
-   FINAL CTA — dark / blue gradient
+   FINAL CTA, dark / blue gradient
    ============================================================ */
 .cta-band { background: var(--dark); color: #fff; }
 .cta-band h2 { color: #fff; margin-bottom: 14px; }
 .cta-band p { color: rgba(255,255,255,.72); max-width: 560px; margin: 0 0 28px; font-size: 1.1rem; }
 
 /* ============================================================
-   SERVICES PAGE — alternating rows
+   SERVICES PAGE, alternating rows
    ============================================================ */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .split.reverse .split-media { order: 2; }
@@ -364,12 +364,12 @@ p  { color: var(--gray-600); }
 .footer-bottom { text-align: center; padding: 26px 0; color: #6b6b6b; font-size: .85rem; }
 
 /* ============================================================
-   SCROLL ANIMATIONS — calm fade + slide up
+   SCROLL ANIMATIONS, calm fade + slide up
    ============================================================ */
 /* thin scroll-progress bar (top of page, site-wide) */
 .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--blue); z-index: 1100; pointer-events: none; }
 
-/* ScrollStack — pinned stacking cards (vanilla port of reactbits ScrollStack) */
+/* ScrollStack, pinned stacking cards (vanilla port of reactbits ScrollStack) */
 .scroll-stack { max-width: 780px; margin: 0 auto; }
 .scroll-stack-card { position: sticky; background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 40px 44px; margin-bottom: 84px; min-height: 190px; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 12px 32px rgba(25,25,25,.07); transform-origin: top center; will-change: transform; }
 .scroll-stack-card:last-child { margin-bottom: 0; }
@@ -390,7 +390,7 @@ p  { color: var(--gray-600); }
   .scroll-stack-card { position: relative; top: auto !important; margin-bottom: 20px; transform: none !important; opacity: 1 !important; }
 }
 
-/* Scroll timeline — vanilla port of Aceternity Timeline: STICKY titles pin while content scrolls, line draws downward */
+/* Scroll timeline, vanilla port of Aceternity Timeline: STICKY titles pin while content scrolls, line draws downward */
 .timeline { position: relative; max-width: 1040px; margin: 0 auto; }
 .tl-track { position: absolute; left: 31px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, transparent, var(--gray-200) 6%, var(--gray-200) 94%, transparent); }
 .tl-fill { position: absolute; left: 31px; top: 0; width: 2px; height: 0; background: linear-gradient(to top, var(--blue) 0%, var(--accent-blue) 9%, rgba(37,99,235,0) 34%); border-radius: 9999px; z-index: 1; opacity: 0; }
@@ -462,7 +462,7 @@ p  { color: var(--gray-600); }
 }
 
 /* ============================================================
-   ✦ FANCY LAYER — appended enhancement (client "fancy" request).
+   ✦ FANCY LAYER, appended enhancement (client "fancy" request).
    Everything below can be deleted to return to the minimal look;
    full revert: git reset --hard original.
    ============================================================ */
@@ -542,7 +542,7 @@ p  { color: var(--gray-600); }
   .btn-cta::after, .btn-primary::after { display: none; }
 }
 
-/* ✦ FANCY — Why (ScrollStack) cards: gradient border, glow, gradient heading */
+/* ✦ FANCY, Why (ScrollStack) cards: gradient border, glow, gradient heading */
 .scroll-stack-card {
   border: 1.5px solid transparent;
   background:
@@ -560,3 +560,15 @@ p  { color: var(--gray-600); }
   background: var(--grad-blue); -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
 }
+
+/* ---------- Blog article (single post) ---------- */
+.article { max-width: 760px; margin-inline: auto; }
+.article .post-meta { color: var(--gray-500); font-size: .92rem; margin-bottom: 26px; }
+.article p { margin-bottom: 20px; font-size: 1.06rem; }
+.article h2 { margin: 40px 0 14px; }
+.article h3 { margin: 30px 0 10px; }
+.article ul { list-style: disc; padding-left: 22px; margin: 0 0 22px; }
+.article ul li { margin-bottom: 10px; }
+.article blockquote { border-left: 3px solid var(--blue); padding: 6px 0 6px 20px; margin: 26px 0; color: var(--dark); font-family: var(--font-head); font-size: 1.15rem; }
+.article .back-link { display: inline-block; margin-top: 8px; font-weight: 600; }
+.post-img.hero-img { height: 300px; border-radius: var(--radius-lg); border: 1px solid var(--gray-200); margin-bottom: 34px; }
