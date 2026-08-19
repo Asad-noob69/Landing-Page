@@ -157,7 +157,7 @@
     tlRender();
   }
 
-  /* ---------- 8. Contact form (submits to Formspree, emails sales@pilotsdr.com) ---------- */
+  /* ---------- 8. Contact form (submits to Formspree, emails earnest@pilotsdr.com) ---------- */
   var form = document.querySelector('#contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -192,14 +192,14 @@
         } else {
           res.json().then(function (data) {
             var msg = (data && data.errors) ? data.errors.map(function (er) { return er.message; }).join(', ')
-                                            : 'Something went wrong. Please email sales@pilotsdr.com directly.';
+                                            : 'Something went wrong. Please email earnest@pilotsdr.com directly.';
             show(msg);
           }).catch(function () {
-            show('Something went wrong. Please email sales@pilotsdr.com directly.');
+            show('Something went wrong. Please email earnest@pilotsdr.com directly.');
           });
         }
       }).catch(function () {
-        show('Network error. Please email sales@pilotsdr.com directly.');
+        show('Network error. Please email earnest@pilotsdr.com directly.');
       }).then(function () {
         if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Send Message'; }
       });
