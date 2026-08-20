@@ -358,9 +358,18 @@ p  { color: var(--gray-600); }
 .footer .col-cta .arrow-link { color: #d4d4d4; margin-top: 0; }
 .footer .col-cta .arrow-link:hover { color: var(--accent-blue); }
 .socials { display: flex; gap: 10px; margin-top: 22px; }
-.socials a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; color: #a3a3a3; transition: background .18s, color .18s; }
+.socials a { width: 38px; height: 38px; border-radius: 8px; background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; color: #a3a3a3; transition: background .18s, color .18s, transform .18s; }
 .socials a:hover { background: #fff; color: var(--dark); }
-.socials svg { width: 17px; height: 17px; }
+.socials svg { width: 18px; height: 18px; }
+/* Official LinkedIn branded tile (blue #0A66C2, white "in") */
+.socials a.social-li { background: #0A66C2; color: #fff; }
+.socials a.social-li:hover { background: #0a5cb0; color: #fff; transform: translateY(-2px); }
+
+/* Footer "Get in Touch" column, cleaner vertical rhythm */
+.footer .col-cta { display: flex; flex-direction: column; align-items: flex-start; }
+.footer .col-cta .btn { margin-bottom: 18px; }
+.footer .col-cta .fmail { margin-bottom: 4px; }
+.footer .col-cta .socials { margin-top: 18px; }
 .footer-bottom { text-align: center; padding: 26px 0; color: #6b6b6b; font-size: .85rem; }
 
 /* ============================================================
@@ -373,10 +382,10 @@ p  { color: var(--gray-600); }
 .scroll-stack { max-width: 780px; margin: 0 auto; }
 .scroll-stack-card { position: sticky; background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 40px 44px; margin-bottom: 84px; min-height: 190px; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 12px 32px rgba(25,25,25,.07); transform-origin: top center; will-change: transform; }
 .scroll-stack-card:last-child { margin-bottom: 0; }
-.scroll-stack-card:nth-child(1) { top: 108px; }
-.scroll-stack-card:nth-child(2) { top: 128px; }
-.scroll-stack-card:nth-child(3) { top: 148px; }
-.scroll-stack-card:nth-child(4) { top: 168px; }
+.scroll-stack-card:nth-child(1) { top: 100px; }
+.scroll-stack-card:nth-child(2) { top: 130px; }
+.scroll-stack-card:nth-child(3) { top: 160px; }
+.scroll-stack-card:nth-child(4) { top: 190px; }
 .scroll-stack-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
 .scroll-stack-card p { font-size: 1.1rem; color: var(--gray-600); max-width: 560px; }
 @media (max-width: 640px) {
@@ -572,3 +581,31 @@ p  { color: var(--gray-600); }
 .article blockquote { border-left: 3px solid var(--blue); padding: 6px 0 6px 20px; margin: 26px 0; color: var(--dark); font-family: var(--font-head); font-size: 1.15rem; }
 .article .back-link { display: inline-block; margin-top: 8px; font-weight: 600; }
 .post-img.hero-img { height: 300px; border-radius: var(--radius-lg); border: 1px solid var(--gray-200); margin-bottom: 34px; }
+
+/* ============================================================
+   SERVICES, branded visual panels (one distinct gradient per service)
+   Self-contained (no external images). Icon sits on a glass badge.
+   ============================================================ */
+.split-media { position: relative; overflow: hidden; border-color: transparent; }
+/* soft decorative glow in the corner of each panel */
+.split-media::before {
+  content: ""; position: absolute; width: 260px; height: 260px; border-radius: 50%;
+  top: -70px; right: -70px; background: rgba(255,255,255,.18); filter: blur(6px);
+}
+.split-media::after {
+  content: ""; position: absolute; width: 150px; height: 150px; border-radius: 50%;
+  bottom: -50px; left: -40px; background: rgba(255,255,255,.10);
+}
+.split-media .icon-badge {
+  position: relative; z-index: 1;
+  background: rgba(255,255,255,.20); color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.28);
+}
+.svc-media-1 { background: linear-gradient(135deg, #1e3a8a 0%, #2563EB 55%, #60a5fa 100%); }
+.svc-media-2 { background: linear-gradient(135deg, #0c4a6e 0%, #0ea5e9 55%, #38bdf8 100%); }
+.svc-media-3 { background: linear-gradient(135deg, #0f766e 0%, #14b8a6 55%, #5eead4 100%); }
+.svc-media-4 { background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 55%, #a78bfa 100%); }
+.svc-media-5 { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 55%, #93c5fd 100%); }
+.svc-media-6 { background: linear-gradient(135deg, #334155 0%, #475569 55%, #94a3b8 100%); }
+.svc-media-7 { background: linear-gradient(135deg, #155e75 0%, #0891b2 55%, #22d3ee 100%); }
+.svc-media-8 { background: linear-gradient(135deg, #3730a3 0%, #4f46e5 55%, #818cf8 100%); }

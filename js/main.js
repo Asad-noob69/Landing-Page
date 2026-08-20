@@ -97,8 +97,8 @@
   if (stack && !reduceMotion) {
     var cards = Array.prototype.slice.call(stack.querySelectorAll('.scroll-stack-card'));
     var tops = [];
-    var itemScale = 0.04;   // each deeper card shrinks by 4%
-    var baseScale = 0.88;   // floor for the deepest card
+    var itemScale = 0.05;   // each deeper card shrinks by 5%
+    var baseScale = 0.85;   // floor for the deepest card
     var ticking = false;
 
     function measure() {
@@ -113,7 +113,7 @@
         }
         var scale = Math.max(baseScale, 1 - depth * itemScale);
         cards[i].style.transform = 'scale(' + scale.toFixed(4) + ')';
-        cards[i].style.opacity = (1 - depth * 0.05).toFixed(3);
+        cards[i].style.opacity = (1 - depth * 0.08).toFixed(3);
       }
     }
     function onStackScroll() {
