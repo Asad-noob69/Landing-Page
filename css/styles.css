@@ -583,29 +583,25 @@ p  { color: var(--gray-600); }
 .post-img.hero-img { height: 300px; border-radius: var(--radius-lg); border: 1px solid var(--gray-200); margin-bottom: 34px; }
 
 /* ============================================================
-   SERVICES, branded visual panels (one distinct gradient per service)
-   Self-contained (no external images). Icon sits on a glass badge.
+   SERVICES, real photo panels (one image per service, self-hosted)
+   Subtle brand overlay keeps them cohesive; icon badge hidden.
    ============================================================ */
-.split-media { position: relative; overflow: hidden; border-color: transparent; }
-/* soft decorative glow in the corner of each panel */
+.split-media {
+  position: relative; overflow: hidden; border-color: transparent;
+  min-height: 320px; background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+/* soft brand-blue overlay for depth and cohesion across all photos */
 .split-media::before {
-  content: ""; position: absolute; width: 260px; height: 260px; border-radius: 50%;
-  top: -70px; right: -70px; background: rgba(255,255,255,.18); filter: blur(6px);
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(37,99,235,.20), rgba(15,23,42,.14));
+  pointer-events: none;
 }
-.split-media::after {
-  content: ""; position: absolute; width: 150px; height: 150px; border-radius: 50%;
-  bottom: -50px; left: -40px; background: rgba(255,255,255,.10);
-}
-.split-media .icon-badge {
-  position: relative; z-index: 1;
-  background: rgba(255,255,255,.20); color: #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.28);
-}
-.svc-media-1 { background: linear-gradient(135deg, #1e3a8a 0%, #2563EB 55%, #60a5fa 100%); }
-.svc-media-2 { background: linear-gradient(135deg, #0c4a6e 0%, #0ea5e9 55%, #38bdf8 100%); }
-.svc-media-3 { background: linear-gradient(135deg, #0f766e 0%, #14b8a6 55%, #5eead4 100%); }
-.svc-media-4 { background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 55%, #a78bfa 100%); }
-.svc-media-5 { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 55%, #93c5fd 100%); }
-.svc-media-6 { background: linear-gradient(135deg, #334155 0%, #475569 55%, #94a3b8 100%); }
-.svc-media-7 { background: linear-gradient(135deg, #155e75 0%, #0891b2 55%, #22d3ee 100%); }
-.svc-media-8 { background: linear-gradient(135deg, #3730a3 0%, #4f46e5 55%, #818cf8 100%); }
+.split-media .icon-badge { display: none; }   /* photo replaces the icon */
+.svc-media-1 { background-image: url("../assets/services/service-1-sdr.jpg"); }
+.svc-media-2 { background-image: url("../assets/services/service-2-bdr.jpg"); }
+.svc-media-3 { background-image: url("../assets/services/service-3-customer-success.jpg"); }
+.svc-media-4 { background-image: url("../assets/services/service-4-sales-ops.jpg"); }
+.svc-media-5 { background-image: url("../assets/services/service-5-revenue-ops.jpg"); }
+.svc-media-6 { background-image: url("../assets/services/service-6-back-office.jpg"); }
+.svc-media-7 { background-image: url("../assets/services/service-7-lead-gen.jpg"); }
+.svc-media-8 { background-image: url("../assets/services/service-8-appointment.jpg"); }
